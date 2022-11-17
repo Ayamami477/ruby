@@ -1,2 +1,5 @@
 String.new("Hello")
 String.new('Hello World')
+
+puts("こんにちは")
+print("Hello World")
