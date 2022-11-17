@@ -1,0 +1,11 @@
+(1..30).each do |i|
+    if i %15 ==0
+        puts "美味しいヤミー感謝感謝"
+    elsif i %3==0
+        puts "美味しいヤミー"
+    elsif i %5==0
+        puts "感謝感謝"
+    else
+        puts i
+      end   
+   end
