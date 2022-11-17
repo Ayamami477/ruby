@@ -1,0 +1,8 @@
+puts("こんにちは。"+"お元気ですか？")
+
+str1 = "名前は"
+str2 = "抹茶"
+str3 = "です"
+
+str = str1 + str2 + str3
+puts(str)
