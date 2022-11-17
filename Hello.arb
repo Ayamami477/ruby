@@ -1,0 +1,2 @@
+string.new("Hello")
+string.new('Hello World')
