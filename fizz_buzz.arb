@@ -1,4 +1,4 @@
-def fizz_buzz(number)
+ruby def fizz_buzz(number)
     if number % 15 == 0
         "FizzBuzz"
     elsif number % 3 == 0

@@ -1,2 +1,2 @@
-string.new("Hello")
-string.new('Hello World')
+String.new("Hello")
+String.new('Hello World')
