@@ -1,0 +1,17 @@
+puts ["foo","bar","baz"]
+puts "---"
+
+ary = Array.new
+puts ary
+puts "---"
+
+ary.push "foo"
+puts ary
+puts "---"
+
+ary.push "bar"
+puts ary
+puts "---"
+
+ary = Array.new(3,"foo")
+puts ary
