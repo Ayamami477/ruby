@@ -1,0 +1,117 @@
+DIGIT_NUMBER  = 4
+
+def make_answer_number
+
+    answer_number_flag  = false
+
+    while  !answer_number_flag 
+        answer_number_flag = true
+      
+        rand_number = rand((10**(DIGIT_NUMBER - 1))..((10**DIGIT_NUMBER) - 1))
+
+        return_answer_number = rand_number
+
+        rand_number_array = []
+
+        DIGIT_NUMBER.times do
+            rand_number_array.push(rand_number % 10)
+            rand_number /= 10
+        end 
+
+        rand_number_array.each_with_index do |digit_number, index|
+            (index + 1).upto(rand_number_array.length - 1) do |upto_times|
+              if digit_number == rand_number_array[upto_times]
+                answer_number_flag = false
+              end
+            end
+          end
+        end
+    return_answer_number
+    end
+
+    def show_rule
+        puts "数当てゲームを行います"
+        puts "これは#{DIGIT_NUMBER}桁の数を探すゲームです"
+        puts "適当な数を入れると桁も数字もあっていれば「hit」としその個数が、"
+        puts "数字はあっているが桁が異なっていれば「blow」としてその個数が出力されます"
+        puts "それを繰り返すことで答えを探すことができます"
+        puts "それではゲームを開始します"
+      end
+
+      def input_number_judge(input_number)
+
+        if input_number < 10**(DIGIT_NUMBER) && input_number >= 10**(DIGIT_NUMBER-1)
+            true
+        else
+        puts "入力された数は#{DIGIT_NUMBER}桁ではありません"
+        puts "もう一度入力してください"
+        false
+       end
+    end
+
+    def number_to_array(number)
+        number_array = []
+        DIGIT_NUMBER.times do
+        number_array.push(number % 10)
+
+        number /= 10
+    end
+    
+    number_array.reverse
+ end
+
+ def input_answer_judge(input_number, set_number)
+
+    hit_time  = 0
+    blow_time = 0
+    
+    input_number_array = number_to_array(input_number)
+    set_number_array   =  number_to_array(set_number)
+    
+    input_number_array.each_with_index do |current_input_number, input_index|
+        if current_input_number == set_number_array[input_index]
+            hit_time += 1
+            next
+        else
+        set_number_array.each_with_index do | current_input_number, set_index|
+
+            next if input_index == set_index
+            if current_input_number == current_input_number
+                blow_time += 1
+                break
+               end
+              end
+            end
+         end
+        
+         puts "#{hit_time}hit,#{blow_time}blow"
+
+         if hit_time == DIGIT_NUMBER
+            true
+            else
+               false
+             end
+          end
+
+          
+#=========================================================
+#                   ここからゲーム開始
+#=========================================================
+
+answer_number = make_answer_number
+
+show_rule
+
+answer_flag = false
+
+while !answer_flag
+   print "#{DIGIT_NUMBER}桁の数を入力してください :"
+   
+   anticipated_number  = gets.to_i
+
+   redo unless input_number_judge(anticipated_number)
+
+   answer_flag = input_answer_judge(anticipated_number,answer_number) 
+   end
+
+   puts "正解です！"
